@@ -12,7 +12,14 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-latest, macos-latest]
+        # nodejs: [12, 14, 16]
+    name: '${{ matrix.runner}}'
+    runs-on: ${{ matrix.runner }}
+    # runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
