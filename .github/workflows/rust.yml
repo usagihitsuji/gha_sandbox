@@ -20,6 +20,7 @@ jobs:
     name: '${{ matrix.runner}}'
     runs-on: ${{ matrix.runner }}
     # runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
     - uses: actions/checkout@v3
@@ -29,3 +30,4 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
       working-directory: ./test_rust_sample
+    - run: echo '${{ secrets.XXXMYSECRETXXX }}'
